@@ -1,0 +1,39 @@
+<!--
+  Generated template for the RegisterWithPhonePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inserisci il codice ricevuto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Codice</ion-label>
+        <ion-input type="text" [(ngModel)]="activaction_code" name="activaction_code" required=""></ion-input>
+      </ion-item>
+        
+        
+<ion-item *ngIf="watching_for_code">
+        
+        <ion-note item-end *ngIf="watching_for_code">
+        Ti stiamo inviando l'sms di conferma: attendi per piacere.
+      </ion-note>
+        
+      </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom"  >
+		<button ion-button full (click)="onSubmit()" *ngIf="!watching_for_code">Usa questo codice</button>
+                <button ion-button  (click)="onSubmit()" *ngIf="watching_for_code">Inserisci codice manualmente</button>
+                <button ion-button  (click)="onBackToRegisterUsingPhone()" *ngIf="watching_for_code">Richiedi altro sms</button>
+	</ion-toolbar>
+</ion-footer>

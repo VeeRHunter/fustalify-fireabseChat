@@ -1,0 +1,4 @@
+<ion-tabs selectedIndex="0">
+        <ion-tab [root]="outgoingTab" [rootParams]="{incoming: incoming}"  tabTitle="Creati" (ionSelect)="onTab($event)"></ion-tab>
+        <ion-tab [root]="incomingTab" [rootParams]="{incoming: incoming}"  tabTitle="A cui sei invitato" (ionSelect)="onTab($event)"></ion-tab>
+</ion-tabs>

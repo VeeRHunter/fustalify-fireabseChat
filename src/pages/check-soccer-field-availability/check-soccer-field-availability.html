@@ -1,0 +1,56 @@
+<!--
+  Generated template for the CheckSoccerFieldAvailabilityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      
+    <ion-title>Verifica</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding  class="list-big-content">
+    <section class="form-section" *ngIf="selectedSoccerField.uid!=undefined && selectedSoccerField.uid>0">
+            <h2 class="section-title" padding>Inserisci date e ora da verificare</h2>
+
+       <ion-item>
+              <ion-label floating>Data</ion-label>
+              <ion-datetime [(ngModel)]="model.event_date" displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" required></ion-datetime>
+            </ion-item>
+
+          <ion-item>
+              <ion-label floating>Orario</ion-label>
+              <ion-datetime [(ngModel)]="model.event_time" displayFormat="HH:mm" pickerFormat="HH:mm" required></ion-datetime>
+            </ion-item>
+      </section>
+    <section class="form-section" *ngIf="selectedSoccerField.uid==undefined || selectedSoccerField.uid==0 || selectedSoccerField.uid==null">
+         <h2 class="section-title" padding>Non è possibile verificare automaticamente la disponibilità</h2>
+         
+          <ion-item>
+              <ion-label floating>Data</ion-label>
+              <ion-datetime [(ngModel)]="model.event_date" displayFormat="DD MM YYYY" pickerFormat="DD MM YYYY" required></ion-datetime>
+            </ion-item>
+
+          <ion-item>
+              <ion-label floating>Orario</ion-label>
+              <ion-datetime minuteValues="0,30" [(ngModel)]="model.event_time" displayFormat="HH:mm" pickerFormat="HH:mm" required></ion-datetime>
+            </ion-item>
+         
+         
+
+    </section>
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button  (click)="onCheck()" [disabled]="!onCheckEnabled">Verifica</button>
+                <button ion-button  (click)="onSubmit()" [disabled]="!onSubmitEnabled">Conferma</button>
+	</ion-toolbar>
+</ion-footer>

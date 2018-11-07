@@ -1,0 +1,83 @@
+<!--
+  Generated template for the EventDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{model.name}}</ion-title>
+    <ion-buttons end>
+        <button ion-button  *ngIf="buttonsEnabled.pay" (click)="buyYourPart()">
+            Paga
+        </button>
+        
+        <button ion-button  *ngIf="buttonsEnabled.add_friends" (click)="inviteFriends()">
+            Invita
+        </button>
+        
+         <button ion-button  *ngIf="buttonsEnabled.compose_teams" (click)="composeTeams()">
+            Squadre
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg">
+    <ion-row class="contact-details-row" wrap>
+          <ion-col no-padding width-65>
+              <h2 class="contact-name"><b>{{model.name}}</b></h2>
+            </ion-col>
+        <ion-col no-padding width-35 class="rating-col">
+      <div class="contact-rating">
+        <ion-item class="rating-item">
+            <h1><b>&euro; {{model.amount}}</b></h1>
+        </ion-item>
+      </div>
+    </ion-col>
+       <ion-col no-padding width-100>
+      <p class="contact-description">
+      <ion-grid  padding>
+          <ion-row>
+              <ion-col width-30>Data </ion-col>
+              <ion-col width-70>{{utilsService.dateToHuman(model.booked_at)}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-30>Orario </ion-col>
+              <ion-col width-70>{{utilsService.timeToHuman(model.from_time)}} - {{utilsService.timeToHuman(model.to_time)}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-30>inviti </ion-col>
+              <ion-col width-70><ion-badge item-end>{{model.invites.length}}</ion-badge></ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-30>accettati </ion-col>
+              <ion-col width-70><ion-badge item-end>{{model.invitesAccepted.length}}</ion-badge></ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-30>rifiutati </ion-col>
+              <ion-col width-70><ion-badge item-end>{{model.invitesDeclined.length}}</ion-badge></ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col width-30>in attesa </ion-col>
+              <ion-col width-70><ion-badge item-end>{{model.invitesWaiting.length}}</ion-badge></ion-col>
+          </ion-row>
+          
+          <ion-row *ngIf="model.countInvitesNotSent>0">
+              <ion-col width-30>non inviati </ion-col>
+              <ion-col width-70><ion-badge item-end>{{model.countInvitesNotSent}}</ion-badge></ion-col>
+          </ion-row>
+      </ion-grid>
+      
+        
+      </p>
+    </ion-col> 
+    </ion-row>
+    
+</ion-content>

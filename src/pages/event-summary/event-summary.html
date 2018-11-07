@@ -1,0 +1,59 @@
+<!--
+  Generated template for the EventSummaryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Riepilogo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-row class="contact-details-row" wrap>
+        <ion-col no-padding width-65>
+      <h2 class="contact-name">{{ selectedEvent.name }}</h2>
+    </ion-col>
+    
+    <ion-col no-padding width-100>
+      <p class="contact-description">
+        {{ selectedEvent.notes }}
+        
+        hai scelto
+        {{ selectedEvent.invites.length }} amici
+        
+      </p>
+    </ion-col>
+    </ion-row>
+    
+    
+    <ion-list *ngIf="selectedSoccerField.uid==undefined || selectedSoccerField.uid==null || selectedSoccerField.uid==0">
+      <ion-item>
+        <ion-label wrap>Costo del campo</ion-label>
+        <ion-input type="number" [(ngModel)]="selectedEvent.amount" name="amount"></ion-input>
+      </ion-item>
+     
+        <ion-item>
+        <ion-label wrap>Ignoro il costo del campo</ion-label>
+         <ion-checkbox [(ngModel)]="ignoreSoccerFieldAmount"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    
+     
+    
+    
+    
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button  (click)="onConfirm()" >Conferma</button>
+                <button ion-button  (click)="onUnConfirm()">Annulla</button>
+	</ion-toolbar>
+</ion-footer>

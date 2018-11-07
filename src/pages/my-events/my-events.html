@@ -1,0 +1,73 @@
+<!--
+  Generated template for the MyEventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>I miei eventi</ion-title>
+    
+    <ion-buttons end>
+        <button ion-button full  (click)="doAdd()">
+            <ion-icon name="icon-plus"></ion-icon>
+        </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="list-big-content">
+    <div class="list-big" *ngIf="items.length>0">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of items" (click)="onSelect($event,item)">
+        <ion-row no-padding class="content-row">
+          <ion-col no-padding width-40 class="item-avatar">
+              {{utilsService.dateToHuman(item.booked_at)}} 
+              
+            <br/>
+           ore  {{utilsService.timeToHuman(item.from_time)}} 
+            
+          </ion-col>
+          <ion-col no-padding width-60 class="item-content">
+              
+              <h3 class="item-title"><b>{{item.name}}</b></h3>
+            <p class="item-description" rows="3">{{item.notes}}   </p>
+            <ion-list no-padding>
+                 <ion-item width-100>
+                    inviti
+                    <ion-badge item-end>{{item.invites.length}}</ion-badge>
+                  </ion-item>
+
+               <ion-item width-100>accettati
+                <ion-badge item-end>{{item.invitesAccepted.length}}</ion-badge>
+                </ion-item>
+  
+                <ion-item width-100>rifiutati
+                <ion-badge item-end>{{item.invitesDeclined.length}}</ion-badge>
+                </ion-item>
+                <ion-item width-100>in attesa
+                <ion-badge item-end>{{item.invitesWaiting.length}}</ion-badge>
+                </ion-item>
+                
+                <ion-item width-100 *ngIf="item.countInvitesNotSent>0">non inviati
+                <ion-badge item-end>{{item.countInvitesNotSent}}</ion-badge>
+                </ion-item>
+            </ion-list>            
+            
+          
+            
+          </ion-col>
+    
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+    
+</ion-content>

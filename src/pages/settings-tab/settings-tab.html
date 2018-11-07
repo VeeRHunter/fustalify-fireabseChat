@@ -1,0 +1,7 @@
+<ion-tabs selectedIndex="0">
+        <ion-tab [root]="profileTab"  tabTitle="Profilo" (ionSelect)="onTab($event)"></ion-tab>
+        <ion-tab [root]="transportsTab" tabTitle="Trasporti" (ionSelect)="onTab($event)"></ion-tab>
+        <ion-tab [root]="paymentSettingsTab" tabTitle="Pagamenti" (ionSelect)="onTab($event)"></ion-tab>
+        <ion-tab [root]="privacySettingsTab" tabTitle="Privacy" (ionSelect)="onTab($event)"></ion-tab>
+        
+</ion-tabs>

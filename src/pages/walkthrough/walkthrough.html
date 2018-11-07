@@ -1,0 +1,71 @@
+<ion-header class="walkthrough-header">
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-button class="skip-button" (click)="skipIntro()" [hidden]="lastSlide">SKIP</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="walkthrough-content">
+  <ion-slides #slider (ionSlideDidChange)="onSlideChanged()" pager="true">
+    <ion-slide class="slide-1">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <preload-image [ratio]="{w:1, h:1}" src="./assets/imgs/icon-ball.png" alt="app logo" title="Benvenuto"></preload-image>
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Benvenuto</h2>
+      <p class="intro-text">
+        Tiki Taka è l'app che cercavi!!!
+      </p>
+      <p class="intro-text">
+       Tiki Taka  ti consentirà di organizzare le partite a calcetto con i tuoi amici in maniera semplice e veloce
+      </p>
+    </ion-slide>
+    <ion-slide class="slide-2">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <preload-image [ratio]="{w:1, h:1}" src="./assets/imgs/icon-court-with-balls.png" alt="Organizza la partita" title="Organizza la partita"></preload-image>
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Organizza la partita</h2>
+      <p class="intro-text">
+          Con Tiki Taka organizzare la tua partita a calcetto è davvero semplice<br/>
+                1) Cerchi il campo<br/>
+                2) Verifichi la disponibilità<br/>
+                3) Invia gli inviti ai tuoi amici<br/>
+                4) Raccogli le quote<br/>
+            
+      </p>
+     
+    </ion-slide>
+    <ion-slide class="slide-3">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <preload-image [ratio]="{w:1, h:1}" src="./assets/imgs/icon-visa.png" alt="slide 3 img" title="Raccogli le quote"></preload-image>
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Raccogli le quote</h2>
+      <p class="intro-text">
+        Con Tiki Taka ogni partecipante alla partita può pagare comodamente dall'app. 
+      </p>
+    </ion-slide>
+    <ion-slide class="slide-4">
+      <ion-row class="intro-image-row">
+        <ion-col center width-64 no-padding>
+          <preload-image [ratio]="{w:1, h:1}" src="./assets/imgs/icon-vespa.png" alt="slide 4 img" title="Chiedi o dai un passaggio"></preload-image>
+        </ion-col>
+      </ion-row>
+      <h2 class="main-title">Chiedi o dai un passaggio</h2>
+      <p class="intro-text">
+        Con Tiki Taka potrai mettere a disposizione la tua auto, il tuo scooter o la tua moto per coloro che hanno difficoltà a raggiungere il campo.<br/>
+        Deciderai tu se offrire un passaggio a rifiutarlo oppure potrai essere tu ad averne bisogno
+      </p>
+      
+      <div class="button-bar">
+<!--        <button ion-button primary (click)="goToLogin()">Iniziamo</button>-->
+        <button ion-button primary (click)="goToSignup()">Iniziamo</button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

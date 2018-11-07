@@ -1,0 +1,63 @@
+<!--
+  Generated template for the MyEventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pagamenti</ion-title>
+     <ion-buttons end>
+        <button ion-button full  *ngIf="buyYourPartButtonEnabled" (click)="buyYourPart()">
+            Paga la tua quota
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding  class="bg">
+    <div class="list-big" *ngIf="items.length>0">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of items" >
+        <ion-row no-padding class="content-row">
+           
+          <ion-col padding width-100 class="item-avatar">
+               
+            {{item.invited_from_name}} ha pagato {{item.soccer_field_bought_amount}}<br/>
+           
+            	
+						
+          </ion-col>
+          
+          
+        </ion-row>
+      </button>
+    </ion-list>
+      
+  </div>
+    
+    <ion-grid padding width-100 class="bg-transparent">
+        <ion-row>
+            <ion-col width-70>Totale da pagare :</ion-col>
+            <ion-col width-30><h2><b>&euro; {{model.amount}}</b></h2></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col width-70>Totale pagato :</ion-col>
+            <ion-col width-30><h2><b>&euro; {{totalPayed}}</b></h2></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col width-70>Rimanente :</ion-col>
+            <ion-col width-30><h2><b>&euro; {{totalLeft}}</b></h2></ion-col>
+        </ion-row>
+        
+    </ion-grid>
+    
+      
+    
+</ion-content>

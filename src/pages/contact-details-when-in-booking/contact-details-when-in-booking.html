@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ContactDetailsWhenInBookingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      
+    <ion-title>Dettagli</ion-title>
+    <ion-buttons end *ngIf="model.unknown==1 && model.flag_privacy_all_can_view_my_number==1">
+        <button ion-button full  (click)="doAdd()">
+            <ion-icon name="icon-plus"></ion-icon>
+        </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-item *ngIf="buttonsEnabled.request"  >
+        <ion-label floating>Mezzo di trasporto</ion-label>
+        <ion-select [(ngModel)]="request.utid" name="utid" >
+            <ion-option *ngFor="let transport of transports" value="{{transport.id}}">{{transport.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+ 
+    <ion-item  *ngIf="buttonsEnabled.vote"  >
+        <ion-label floating>Voto</ion-label>
+        <ion-input type="number" [(ngModel)]="model.vote" name="vote" required=""></ion-input>
+      </ion-item>
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button *ngIf="buttonsEnabled.request"  (click)="onRequestTransport()" >Richiedi</button>
+                <button ion-button *ngIf="buttonsEnabled.vote" (click)="onVote()">Dai un voto</button>
+                <button ion-button *ngIf="buttonsEnabled.phone" (click)="onPhoneCall()">Chiama</button>
+                <button ion-button *ngIf="buttonsEnabled.chat" (click)="onChat()">Chat</button>
+                
+	</ion-toolbar>
+</ion-footer>

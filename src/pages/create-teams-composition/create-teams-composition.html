@@ -1,0 +1,36 @@
+<!--
+  Generated template for the RegisterWithEmailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Composizione squadra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <form>
+    <ion-list>
+      <ion-item>
+        <button ion-button full round color="secondary" (click)="onComposeRandom()">Composizione casuale</button>
+      </ion-item>
+        
+        <ion-item>
+        <button ion-button full round color="secondary" (click)="onComposeManual()">Composizione manuale</button>
+      </ion-item>
+        
+        <ion-item>
+        <button ion-button full round color="secondary" (click)="onComposeByFeedbacks()">Composizione in base al rendimento</button>
+      </ion-item>
+        
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profilo</ion-title>
+      <ion-buttons end>
+        <button ion-button full  (click)="save()" >
+            <ion-icon name="icon-checkmark"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="user.name" name="name" required=""></ion-input>
+      </ion-item>
+       <ion-item>
+        <ion-label floating>Cognome</ion-label>
+        <ion-input type="text" [(ngModel)]="user.surname" name="surname" required=""></ion-input>
+      </ion-item>
+       <ion-item>
+        <ion-label floating>Ruolo preferito</ion-label>
+        <ion-select [(ngModel)]="user.preferred_prid" name="preferred_prid" >
+            <ion-option *ngFor="let pl of availablePlayerRoles" value="{{pl.id}}">{{pl.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+        
+       
+        <ion-item *ngIf="canChangePhone">
+        <ion-label floating>Telefono</ion-label>
+        <ion-input type="number" [(ngModel)]="user.phone" name="phone" required=""></ion-input>
+      </ion-item>
+        
+       
+    </ion-list>
+
+</ion-content>
+<!--<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button  (click)="save()">Salva</button>
+                <button ion-button  (click)="removeAccount()">Rimuovi account</button>
+	</ion-toolbar>
+</ion-footer>-->

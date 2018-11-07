@@ -1,0 +1,5 @@
+    <ion-tabs selectedIndex="0">
+        <ion-tab [root]="details" [rootParams]="{model: model}" tabTitle="Dettagli" (ionSelect)="onTab()"></ion-tab>
+        <ion-tab [root]="invited" [rootParams]="{model: model}" tabTitle="Partecipanti" (ionSelect)="onTab()"></ion-tab>
+        <ion-tab [root]="pay" [rootParams]="{model: model}" tabTitle="Pagamenti" (ionSelect)="onTab()"></ion-tab>
+    </ion-tabs>

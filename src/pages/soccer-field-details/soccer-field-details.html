@@ -1,0 +1,110 @@
+<!--
+  Generated template for the SoccerFieldDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dettagli</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-row class="contact-details-row" wrap>
+        <ion-col no-padding width-100>
+      <h2 class="contact-name">{{ selectedSoccerField.name }}</h2>
+    </ion-col>
+    
+    <ion-col no-padding width-100>
+      <p class="contact-description">
+        {{ selectedSoccerField.description }}
+        <br/>
+        <span *ngIf="selectedSoccerField.address!=undefined && selectedSoccerField.address!=null && selectedSoccerField.address!=''">{{ selectedSoccerField.address }} {{ selectedSoccerField.city }} {{ selectedSoccerField.province }}</span>
+        
+      </p>
+    </ion-col>
+        
+      <ion-col no-padding width-100>
+      <p class="contact-description">
+          Questo campo rimane aperto:
+      <ion-grid padding>
+          <ion-row>
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.monday_is_open!=undefined && selectedSoccerField.monday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.monday_is_open==undefined || selectedSoccerField.monday_is_open==0"></ion-icon>
+                  Lunedì</ion-col>
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.tuesday_is_open!=undefined && selectedSoccerField.tuesday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.tuesday_is_open==undefined || selectedSoccerField.tuesday_is_open==0"></ion-icon>
+                  Martedì</ion-col>
+             </ion-row> 
+          <ion-row>
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.wednesday_is_open!=undefined && selectedSoccerField.wednesday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.wednesday_is_open==undefined || selectedSoccerField.wednesday_is_open==0"></ion-icon>
+                  Mercoledì</ion-col>
+              
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.thursday_is_open!=undefined && selectedSoccerField.thursday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.thursday_is_open==undefined || selectedSoccerField.thursday_is_open==0"></ion-icon>
+                  Giovedì</ion-col>
+              
+          </ion-row>
+          <ion-row>
+              
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.friday_is_open!=undefined && selectedSoccerField.friday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.friday_is_open==undefined || selectedSoccerField.friday_is_open==0"></ion-icon>
+                  Venerdì</ion-col>
+              <ion-col width-50>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.saturday_is_open!=undefined && selectedSoccerField.saturday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.saturday_is_open==undefined || selectedSoccerField.saturday_is_open==0"></ion-icon>
+                  Sabato</ion-col>
+          </ion-row>
+          
+          <ion-row>
+              <ion-col width-100>
+                  <ion-icon name="checkmark" *ngIf="selectedSoccerField.sunday_is_open!=undefined && selectedSoccerField.sunday_is_open==1"></ion-icon>
+                  <ion-icon name="close" *ngIf="selectedSoccerField.sunday_is_open==undefined || selectedSoccerField.sunday_is_open==0"></ion-icon>
+                  Domenica</ion-col>
+              
+          </ion-row>
+          
+      </ion-grid>   
+      
+      
+    
+      </p>
+    </ion-col>
+        
+    </ion-row>
+    
+    
+    
+   <div class="button-bar">
+    <!-- <button ion-button primary (click)="call(contact.phone)"> -->
+    <button ion-button primary *ngIf="buttonsEnabled.callPhone"  (click)="onPhoneCall()">
+      <ion-icon name="call"></ion-icon> Chiama
+    </button>
+    <button ion-button primary *ngIf="buttonsEnabled.sendEmail" (click)="sendMail()">
+      <ion-icon name="mail"></ion-icon> Mail
+    </button>
+    <button ion-button primary *ngIf="buttonsEnabled.openWebsite" (click)="openInAppBrowser()">
+      <ion-icon name="globe"></ion-icon> Sito
+    </button>
+  </div>
+    
+    
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full (click)="onSubmit()">Verifica disponbilità</button>
+	</ion-toolbar>
+</ion-footer>

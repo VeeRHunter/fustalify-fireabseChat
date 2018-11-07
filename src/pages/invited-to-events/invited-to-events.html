@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Inviti</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page">
+  <ion-list  *ngIf="items.length>0">
+
+    
+   <ion-item *ngFor="let item of items" class="item-text-wrap" text-wrap>
+      <ion-avatar item-start (click)="onSelect($event,item)">
+        <ion-icon name="log-in"></ion-icon>
+        
+      </ion-avatar>
+       
+      <h2><b>{{item.invited_from_name}}</b> ti invita ad un evento</h2>
+      <p><b>{{item.invited_from_name}}</b> ti sta invitando al seguente evento:
+          <br/>
+          {{item.booking.name}}<br/>
+          che si terrà il {{item.booking.booked_at}} presso il campo di calcetto 
+          {{item.soccerField.name}}
+          
+           
+         <button ion-button  item-start type="submit" round color="primary"
+                         *ngIf="item.friend_is_accepted==0"
+                         (click)="onAccept($event,item)">Accetto</button>
+         <button ion-button item-end type="submit" round color="primary"
+                         *ngIf="item.friend_is_accepted==0"
+                         (click)="onDecline($event,item)">Non Accetto</button>
+           
+           
+         <ion-icon item-end name="done-all" *ngIf="item.friend_is_accepted==1"></ion-icon>   
+          
+         
+          </p>
+      <ion-note item-end>{{utilsService.dateToHuman(item.booking.booked_at)}}</ion-note>
+      
+       
+     
+      
+      
+   </ion-item>
+    
+    
+  </ion-list>
+    
+    <ion-card  *ngIf="items.length==0 && loaded">
+
+  <ion-card-header>
+    Oh no!!!
+  </ion-card-header>
+
+  <ion-card-content>
+    Al momento non hai nessun evento a cui partecipare
+  </ion-card-content>
+
+</ion-card>
+    
+
+</ion-content>

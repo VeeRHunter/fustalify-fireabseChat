@@ -1,0 +1,40 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Impostazioni privacy</ion-title>
+    <ion-buttons end>
+        <button ion-button full  (click)="save()" >
+            <ion-icon name="icon-checkmark"></ion-icon>
+        </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item>
+        <ion-label wrap>Tutti possono vedere il tuo numero</ion-label>
+       <ion-checkbox [(ngModel)]="flag_privacy_all_can_view_my_number"></ion-checkbox>
+      </ion-item>
+       
+    </ion-list>
+
+</ion-content>
+<!--<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full (click)="save()">Salva</button>
+                
+	</ion-toolbar>
+</ion-footer>-->

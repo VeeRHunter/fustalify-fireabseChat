@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>I miei trasporti</ion-title>
+      <ion-buttons end>
+        <button ion-button full  (click)="onAdd()" >
+            <ion-icon name="icon-plus"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding  class="list-big-content">
+    <div class="list-big" *ngIf="items.length>0">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of items" (click)="onSelect($event,item)">
+        <ion-row padding class="content-row">
+            <ion-col no-padding width-30 class="item-content" wrap>
+                <h1><b>{{item.availability}}</b> 
+                    <span *ngIf="item.availability>1" >posti</span>
+                    <span *ngIf="item.availability==1" >posto</span>
+                    
+                    </h1>
+            </ion-col>
+          <ion-col padding width-50 class="item-content">
+              <h3 class="item-title"><b>{{item.name}}</b></h3>
+            <p class="item-description" rows="3">{{item.description}}
+                
+              </p>
+            
+          </ion-col>
+          <ion-col padding width-20 class="item-icon">
+            <ion-icon name="icon-info"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+    
+</ion-content>
+<!--<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full (click)="onAdd()">Aggiungi trasporto</button>
+	</ion-toolbar>
+</ion-footer>-->

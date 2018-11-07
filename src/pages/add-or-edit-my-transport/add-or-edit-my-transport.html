@@ -1,0 +1,51 @@
+<!--
+  Generated template for the RegisterWithEmailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+     </button>
+    <ion-title *ngIf="isNewRecord">Nuovo trasporto</ion-title>
+    <ion-title *ngIf="!isNewRecord">Modifica trasporto</ion-title>
+     <ion-buttons end>
+        <button ion-button full  (click)="onSubmit()" >
+            <ion-icon name="icon-checkmark"></ion-icon>
+        </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Descrizione breve</ion-label>
+        <ion-input type="text" [(ngModel)]="model.name" name="name" required=""></ion-input>
+      </ion-item>
+        
+      <ion-item>
+        <ion-label floating>Descrizione estesa</ion-label>
+        <ion-input type="text" [(ngModel)]="model.description" name="description" required=""></ion-input>
+      </ion-item>
+       
+      <ion-item>
+        <ion-label floating>Posti disponibili</ion-label>
+        <ion-input type="number" [(ngModel)]="model.availability" name="availability" required=""></ion-input>
+      </ion-item>
+        
+        
+    </ion-list>
+ 
+</ion-content>
+<!--<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full (click)="onSubmit()">Salva</button>
+	</ion-toolbar>
+</ion-footer>-->

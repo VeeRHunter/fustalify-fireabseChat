@@ -1,0 +1,47 @@
+<!--
+  Generated template for the MyEventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+       <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+<!--    <ion-title>Seleziona campo</ion-title>-->
+    
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg-court-with-balls">
+    <div class="list-big" *ngIf="soccerFields.length>0">
+    <ion-list class="bg-transparent">
+      <button class="list-item bg-transparent" ion-item *ngFor="let item of soccerFields" (click)="onSelect($event,item)">
+        <ion-row no-padding class="bg-transparent">
+          <ion-col no-padding width-33 class="item-avatar bg-transparent">
+            <img alt="icon ball" src="../assets/imgs/soccer-field-unknown.png" *ngIf="item.uid==undefined || item.uid==0"/>
+                <img alt="icon ball" src="../assets/imgs/soccer-field-verified.png" *ngIf="item.uid!=undefined && item.uid>0"/>
+          </ion-col>
+            
+          <ion-col no-padding width-66 class="item-content bg-transparent" text-wrap>
+              <h3 class="item-title"><b>{{item.name}}</b></h3>
+            <p class="item-description" *ngIf="item.address!='Sconosciuto'">{{item.address}}</p>
+             <p class="item-description"
+                *ngIf="user.last_latitude!=undefined && user.last_longitude!=undefined && item.latitude!=undefined && item.longitude!=undefined"
+                >dista <b>{{utilsService.distanceBetweenToHuman(user.last_latitude,user.last_longitude,item.latitude,item.longitude)}}</b> da te</p>
+          </ion-col>
+            
+         
+         
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+    
+</ion-content>

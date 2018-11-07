@@ -1,0 +1,23 @@
+page-compose-player-team {
+   .bg-image{
+        background-image: url('../assets/soccer_field_bg_v.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    
+   .player-not-selected{
+        background-image: url('../assets/player48x48_not_selected.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    .player-selected{
+        background-image: url('../assets/player48x48_selected.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    
+    
+}

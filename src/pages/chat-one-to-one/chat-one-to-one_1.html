@@ -1,0 +1,82 @@
+<!--
+  Generated template for the ChatOneToOnePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      
+                       
+    <ion-title>{{contact.name}}
+    <p *ngIf="contact.typing==1" style="font-size:10px">sta scrivendo....</p>
+    
+    </ion-title>
+       
+    <ion-buttons end>
+        <button ion-button full>
+             <ion-icon name="thumbs-up" *ngIf="contact.online==1"></ion-icon>
+        <ion-icon name="thumbs-down" *ngIf="contact.online==0"></ion-icon>
+
+        </button>
+    </ion-buttons>
+       
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list  [virtualScroll]="contact.messages" id="ionList" approxItemHeight="'40px'">
+        <ion-item *virtualItem="let item" no-lines>
+           <div class="chat-message" text-right *ngIf="item.incoming!=1">
+                <div class="right-bubble">
+                <span class="msg-date">{{item.received_or_sent_at | date:'short'}}</span>
+              <div text-wrap *ngIf="item.type=='text'">{{item.text}}</div>
+              <div text-wrap *ngIf="item.type=='voice' || item.type=='video'"><button ion-button full  (click)="onPlay($event,item)"><ion-icon name="play"></ion-icon></button></div>
+              <div text-wrap *ngIf="item.type=='image'"><ion-img [src]="item.text"></ion-img></div>
+                </div>
+           </div>
+            <div class="chat-message" text-left *ngIf="item.incoming==1">
+                  <div class="left-bubble">
+                    <span class="msg-date">{{item.received_or_sent_at | date:'short'}}</span>
+                  <div text-wrap *ngIf="item.type=='text'">{{item.text}}</div>
+                  <div text-wrap *ngIf="item.type=='voice' || item.type=='video'"><button ion-button full  (click)="onPlay($event,item)"><ion-icon name="play"></ion-icon></button></div>
+                  <div text-wrap *ngIf="item.type=='image'"><ion-img [src]="item.text"></ion-img>
+
+                    </div>
+                     <ion-icon name="checkmark" *ngIf="item.status==1"></ion-icon>
+                      <ion-icon name="done-all" *ngIf="item.status==3"></ion-icon>
+                </div>
+
+            </div>     
+        </ion-item>
+    </ion-list>
+    
+   <ion-fab bottom right>
+   <button ion-fab (click)="scrollDown()"><ion-icon name="arrow-dropdown-circle"></ion-icon></button>
+ </ion-fab>
+    
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-textarea placeholder="Type a message" [(ngModel)]="newMessage.text" name="message"
+                   (keyup)="onSendTyping()"
+                   ></ion-textarea>
+      </ion-col>
+      <ion-col col-2 (click)="onSendMessage()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </ion-col>
+        <ion-col col-2 (click)="onSendVoice()">
+        <ion-icon name="mic"></ion-icon>
+      </ion-col>
+        <ion-col col-2 (click)="onSendImage()">
+        <ion-icon name="image"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Richieste di passaggio</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page">
+  <ion-list  *ngIf="items.length>0">
+
+    
+   <ion-item *ngFor="let item of items" class="item-text-wrap" text-wrap>
+      <ion-avatar item-start>
+        <ion-icon name="log-in" *ngIf="item.uid_carrier!=user.id"></ion-icon>
+        <ion-icon name="log-out" *ngIf="item.uid_carrier==user.id"></ion-icon>
+      </ion-avatar>
+       <h2 *ngIf="item.uid_carrier==user.id && item.status==0" class="item-text-wrap"><b>{{item.name}}</b> ti ha chiesto un passaggio</h2>
+       <h2 *ngIf="item.uid_carrier==user.id && item.status==1" class="item-text-wrap">Stai prendendo a bordo <b>{{item.name}}</b></h2>
+       <h2 *ngIf="item.uid_carrier==user.id && item.status==2" class="item-text-wrap">Hai rifiutato il passaggio a <b>{{item.name}}</b></h2>
+      
+      <p *ngIf="item.uid_carrier==user.id">
+          la richiesta è relativa all'evento <b>{{item.soccerFieldBooking.name}}</b> del {{item.soccerFieldBooking.booked_at}}. <b>{{item.name}}</b> ti sta chiedendo di prenderlo a bordo del tuo mezzo di trasporto ( la tua <b>{{item.userTransport.name}}</b> per cui hai <b>{{item.userTransport.availability}}</b> posti disponibili)
+            <br/>
+          <button ion-button  item-start type="submit" round color="primary"
+                         *ngIf="item.status==0"
+                         (click)="onAccept(item)">Accetto</button>
+         <button ion-button item-end type="submit" round color="primary"
+                         *ngIf="item.status==0"
+                         (click)="onDecline(item)">Non Accetto</button>
+         <ion-icon item-end name="done-all" *ngIf="item.status==1"></ion-icon>   
+          
+          
+          
+      </p>
+      
+      
+      <h2 *ngIf="item.uid_carrier!=user.id" class="item-text-wrap">Hai chiesto un passaggio a <b>{{item.name}}</b></h2>
+      <p *ngIf="item.uid_carrier!=user.id">
+            
+          la richiesta è relativa all'evento <b>{{item.soccerFieldBooking.name}}</b> del {{item.soccerFieldBooking.booked_at}}. <b>Tu</b> stai chiedendo di prenderti a bordo del suo mezzo di trasporto ( la sua <b>{{item.userTransport.name}}</b> per cui ha <b>{{item.userTransport.availability}}</b> posti disponibili)
+          <br/>
+          
+          <span *ngIf="item.status==0" class="item-text-wrap"><b>{{item.name}}</b> deve ancora valutare la tua richiesta</span>   
+          <span *ngIf="item.status==1" class="item-text-wrap"><b>{{item.name}}</b> ti prenderà a bordo</span>
+          <span *ngIf="item.status==2" class="item-text-wrap"><b>{{item.name}}</b> ti ha negato il passaggio</span>
+          
+          <ion-icon item-end name="done-all" *ngIf="item.status==1"></ion-icon>   
+      </p>
+   </ion-item>
+    
+    
+  </ion-list>
+    
+    <ion-card  *ngIf="items.length==0 && loaded">
+
+  <ion-card-header>
+    Oh no!!!
+  </ion-card-header>
+
+  <ion-card-content>
+    Nessuno ha richiesto un passaggio e tu non hai richiesto alcun passaggio al momento
+  </ion-card-content>
+
+</ion-card>
+    
+
+</ion-content>
