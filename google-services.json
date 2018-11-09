@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "469487751298",
-    "firebase_url": "https://futsalify.firebaseio.com",
-    "project_id": "futsalify",
-    "storage_bucket": "futsalify.appspot.com"
+    "project_number": "890064930607",
+    "firebase_url": "https://fuality-app.firebaseio.com",
+    "project_id": "fuality-app",
+    "storage_bucket": "fuality-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:469487751298:android:3961d15dc3a12144",
+        "mobilesdk_app_id": "1:890064930607:android:3961d15dc3a12144",
         "android_client_info": {
           "package_name": "com.futsalify.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "469487751298-jrfcjhsdtbu811fgr4kfeuh6ce5bfejv.apps.googleusercontent.com",
+          "client_id": "890064930607-2n19crcln8olijpeu3j0u3jgadmjdd81.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAhFix741Fw3qIas79JiiYd8wxFSWZRc9Y"
+          "current_key": "AIzaSyCkieheqEZqscLokurHNRSd4r7hPXC3jIw"
         }
       ],
       "services": {

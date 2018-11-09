@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { AndroidPermissions} from '@ionic-native/android-permissions';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { MyApp } from './app.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -14,7 +14,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions,CaptureAudioOptions } from '@ionic-native/media-capture';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions, CaptureAudioOptions } from '@ionic-native/media-capture';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Media, MediaObject } from '@ionic-native/media';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
@@ -82,9 +82,27 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //import { GoogleMapsService } from '../pages/maps/maps.service';
 import { Keyboard } from '@ionic-native/keyboard';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { PersistenceService,FBService,UtilsService,BEService,FirebaseChatService } from './services';
+import { PersistenceService, FBService, UtilsService, BEService, FirebaseChatService } from './services';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { Firebase } from '@ionic-native/firebase';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+const firebaseConfig = {
+  // apiKey: "AIzaSyA0wohzI7tSpUwO2SjrT9Z-l57AXhcXX2o",
+  // authDomain: "fir-cbe04.firebaseapp.com",
+  // databaseURL: "https://fir-cbe04.firebaseio.com",
+  // projectId: "fir-cbe04",
+  // storageBucket: "",
+  // messagingSenderId: "691595735665"
+  apiKey: "AIzaSyBq_NRIX-3j9WL23V1U7jZS6Dq_9AyA1ek",
+  authDomain: "fuality-app.firebaseapp.com",
+  databaseURL: "https://fuality-app.firebaseio.com",
+  projectId: "fuality-app",
+  storageBucket: "fuality-app.appspot.com",
+  messagingSenderId: "890064930607"
+};
 @NgModule({
   declarations: [
     MyApp,
@@ -140,19 +158,21 @@ import { Firebase } from '@ionic-native/firebase';
     FatalErrorUnknownPage,
     //
     WalkthroughPage,
-    
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp,{
-			modalEnter: 'modal-slide-in',
-			modalLeave: 'modal-slide-out',
-			pageTransition: 'ios-transition',
-			swipeBackEnabled: false
-		}),
-                IonicStorageModule.forRoot()
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    IonicModule.forRoot(MyApp, {
+      modalEnter: 'modal-slide-in',
+      modalLeave: 'modal-slide-out',
+      pageTransition: 'ios-transition',
+      swipeBackEnabled: false
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -208,17 +228,17 @@ import { Firebase } from '@ionic-native/firebase';
     WalkthroughPage,
     UserDisabledPage,
     FatalErrorUnknownPage,
-    
-    
-    
+
+
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-    ,HTTP
-    ,IonicStorageModule
-    ,PersistenceService,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    , HTTP
+    , IonicStorageModule
+    , PersistenceService,
     Facebook,
     FBService,
     UtilsService,
@@ -228,7 +248,7 @@ import { Firebase } from '@ionic-native/firebase';
     Geolocation,
     CallNumber,
     Contacts,
-   // GoogleMapsService,
+    // GoogleMapsService,
     Keyboard,
     PayPal,
     Firebase,
@@ -239,10 +259,10 @@ import { Firebase } from '@ionic-native/firebase';
     FileTransferObject,
     Media,
     StreamingMedia,
-    
-    
-    
+
+
+
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

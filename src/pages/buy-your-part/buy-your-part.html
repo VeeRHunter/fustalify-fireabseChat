@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-      <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-     
+
     <ion-title>Paga</ion-title>
   </ion-navbar>
 
@@ -18,32 +18,32 @@
 
 
 <ion-content padding class="bg">
-    <h2 class="contact-name">Dettagli del campo</h2>
-    <ion-list>
-        <ion-item width-33>La partita</ion-item>
-        <ion-item width-67>{{model.name}}</ion-item>
-        
-        <ion-item width-33>Da ora</ion-item>
-        <ion-item width-67>{{model.from_time}}</ion-item>
-        
-        <ion-item width-33>A ora</ion-item>
-        <ion-item width-67>{{model.to_time}}</ion-item>
-        
-        <ion-item width-33>Sito</ion-item>
-        <ion-item width-67>{{model.website}}</ion-item>
-        
-         <ion-item width-33>Importo totale</ion-item>
-        <ion-item width-67  >{{model.amount}}</ion-item>
-        
-<!--    <ion-item width-33>Amici invitati</ion-item>
+  <h2 class="contact-name">Dettagli del campo</h2>
+  <ion-list>
+    <ion-item width-33>La partita</ion-item>
+    <ion-item width-67>{{model.name}}</ion-item>
+
+    <ion-item width-33>Da ora</ion-item>
+    <ion-item width-67>{{model.from_time}}</ion-item>
+
+    <ion-item width-33>A ora</ion-item>
+    <ion-item width-67>{{model.to_time}}</ion-item>
+
+    <ion-item width-33>Sito</ion-item>
+    <ion-item width-67>{{model.website}}</ion-item>
+
+    <ion-item width-33>Importo totale</ion-item>
+    <ion-item width-67>{{model.amount}}</ion-item>
+
+    <!--    <ion-item width-33>Amici invitati</ion-item>
         <ion-item width-67>{{model.invites.length}}</ion-item>
         -->
-    </ion-list>
-    
+  </ion-list>
+
 </ion-content>
 <ion-footer no-shadow>
-	<ion-toolbar position="bottom">
-		<button ion-button  (click)="confirm()">Paga</button>
-                <button ion-button  (click)="undo()">Annulla</button>
-	</ion-toolbar>
+  <ion-toolbar position="bottom">
+    <button ion-button (click)="confirm()">Paga</button>
+    <button ion-button (click)="undo()">Annulla</button>
+  </ion-toolbar>
 </ion-footer>
